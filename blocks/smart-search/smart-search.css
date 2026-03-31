@@ -1,0 +1,126 @@
+/*
+ * Smart Search Block — Senseforth Integration
+ *
+ * Block-level layout and search bar styles. The Senseforth widget's own CSS
+ * (index-*.css and app-*.css) is loaded dynamically from their CDN.
+ */
+
+/* Block wrapper */
+.smart-search-container .smart-search-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.smart-search {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px 16px;
+}
+
+/* Senseforth search bar */
+.smart-search .ff-search-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-family: var(--body-font-family, 'Mulish', sans-serif);
+  line-height: 1;
+}
+
+.smart-search .search-icon {
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  background: var(--background-color, #fff);
+  padding: 12px;
+  border-radius: 32px;
+  align-items: center;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+  transition: box-shadow 0.2s ease;
+}
+
+.smart-search .search-icon:hover {
+  box-shadow: 0 4px 16px rgb(0 0 0 / 12%);
+}
+
+.smart-search .search-icon .search-input-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  width: 90%;
+}
+
+.smart-search .search-icon .search-input-div svg {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.smart-search .search-icon .search-input-div .input-content {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #64789b;
+  letter-spacing: 0.25px;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  will-change: transform, opacity;
+}
+
+.smart-search .search-icon .search-input-div .input-content.animate-scroll {
+  animation: smart-search-scroll-fade 0.6s ease;
+}
+
+.smart-search .search-icon .mic-action-div {
+  display: flex;
+  padding: 0 4px 0 8px;
+  border-left: 1px solid #b2b5b8;
+}
+
+.smart-search .search-icon .mic-action-div svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Responsive */
+@media (width <= 690px) {
+  .smart-search .search-icon {
+    height: 44px;
+    padding: 4px 12px;
+  }
+
+  .smart-search .search-icon .search-input-div .input-content {
+    font-size: 12px;
+    text-align: start;
+  }
+
+  .smart-search .search-icon .search-input-div svg,
+  .smart-search .search-icon .mic-action-div svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Placeholder rotation animation */
+@keyframes smart-search-scroll-fade {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  49% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
