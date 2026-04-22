@@ -77,10 +77,10 @@ function prefillAndSubmit(query) {
       input.dispatchEvent(new Event('input', { bubbles: true }));
       input.dispatchEvent(new Event('change', { bubbles: true }));
 
-      if (!window.__sfAutoSubmitDone) {
+      if (!window.sfAutoSubmitDone) {
         requestAnimationFrame(() => {
           requestAnimationFrame(() => {
-            window.__sfAutoSubmitDone = true;
+            window.sfAutoSubmitDone = true;
             input.dispatchEvent(new KeyboardEvent('keydown', {
               key: 'Enter', code: 'Enter', keyCode: 13, which: 13, bubbles: true, cancelable: true,
             }));
