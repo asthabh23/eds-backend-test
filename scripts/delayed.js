@@ -5,19 +5,34 @@ import { loadScript } from './aem.js';
 // ============================================================
 // Adobe Launch + Web SDK (Alloy)
 // ============================================================
-// SETUP: Verify ADOBE_LAUNCH_URL below matches your production container.
-// Get from: Adobe Experience Platform → Data Collection → Tags →
-//           Your Property → Environments → Production → Install
 //
-// ANALYTICS_CHANNEL: Set this to your site's channel name for analytics.
-//   Must match the XDM field mapping configured in your Launch container.
+// ACTION REQUIRED: Complete these steps to activate Adobe Analytics
 //
-// NOTE: Skipped on localhost and .aem.page/.aem.live preview domains
-//   to avoid polluting production analytics during development.
+// 1. Set ADOBE_LAUNCH_URL below to your Launch container URL
+//    → Get from: Adobe Experience Platform → Data Collection → Tags →
+//      Your Property → Environments → Production → Install
+//    → Format: https://assets.adobedtm.com/{PROPERTY_ID}/launch-{HASH}.min.js
+//
+// 2. Set ANALYTICS_CHANNEL to your site's channel name
+//    → Must match the XDM field mapping in your Launch container
+//    → Example: 'wknd-website'
+//
+// 3. (Optional) If using a consent management platform (OneTrust, etc.):
+//    → Ensure it sets 'analytics_storage=denied' cookie when consent is denied
+//    → Or modify the consent check below to match your CMP's cookie format
+//
+// 4. Deploy to production domain to verify:
+//    → Open DevTools → Network tab
+//    → Confirm Launch script loads ~3s after page load
+//    → Confirm analytics beacon fires to edge.adobedc.net or your analytics endpoint
+//
+// NOTE: Analytics is automatically skipped on localhost, .aem.page, and .aem.live
+//       to avoid polluting production data during development.
+//
 // ============================================================
 
-const ADOBE_LAUNCH_URL = ''; // ← Set your Launch container URL (e.g., from audit: https://assets.adobedtm.com/8435ef3ee65b/ba907718de70/launch-23f8357258bd.min.js)
-const ANALYTICS_CHANNEL = ''; // ← Set your channel name (e.g., 'wknd-website')
+const ADOBE_LAUNCH_URL = ''; // ← ACTION: Set your Launch container URL
+const ANALYTICS_CHANNEL = ''; // ← ACTION: Set your channel name (e.g., 'wknd-website')
 
 function loadAdobeLaunch() {
   if (!ADOBE_LAUNCH_URL) {
